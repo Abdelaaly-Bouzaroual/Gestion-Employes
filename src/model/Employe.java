@@ -7,7 +7,7 @@ public class Employe {
     private String poste;
     private double salaire;
 
-    // Constructor with all attributes except ID
+    // Constructeur avec tous les attributs. Initialise un employé avec un ID unique, nom, poste, et salaire.
     public Employe(String nom, String poste, double salaire) {
         if (nom == null || nom.trim().isEmpty() || poste == null || poste.trim().isEmpty() || salaire <= 0) {
             throw new IllegalArgumentException("Les champs nom, poste et salaire doivent être valides.");

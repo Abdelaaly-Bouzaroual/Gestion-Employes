@@ -9,6 +9,12 @@ public class GestionEmployes {
     private static Employe[] employes = new Employe[50];
     private static int count = 0;
 
+
+    // Ajoute un nouvel employé au tableau si de l'espace est disponible
+    // et si les données sont valides.
+    // validation des données d'entrée
+    // gestion des exceptions si les données sont invalides
+    // ajout de l'employé au tableau
     public static void ajouterEmploye(String nom, String poste, double salaire) {
         try {
             if (nom == null || nom.trim().isEmpty()) {
@@ -32,8 +38,8 @@ public class GestionEmployes {
         }
     }
 
-
-
+    // Modifie les informations d'un employé existant en utilisant son ID.
+    // Si l'ID ne correspond à aucun employé, affiche un message d'erreur.
     public static void modifierEmploye(int id, String nouveauNom, String nouveauPoste, double nouveauSalaire) {
         try {
             boolean found = false;
@@ -55,7 +61,8 @@ public class GestionEmployes {
         }
     }
 
-
+    // Supprime un employé du tableau en utilisant son ID.
+    // Lève une exception si aucun employé avec cet ID n'est trouvé.
     public static void supprimerEmploye(int id) throws Exception {
         boolean found = false;
         for (int i = 0; i < count; i++) {
@@ -71,7 +78,7 @@ public class GestionEmployes {
             throw new Exception("Employé avec l'ID " + id + " non trouvé.");
         }
     }
-
+    // Calcule et affiche la masse salariale totale des employés.
     public static void calculerMasseSalariale() {
         double total = 0;
         for (int i = 0; i < count; i++) {
@@ -79,7 +86,7 @@ public class GestionEmployes {
         }
         System.out.println("La masse salariale totale est de: " + total);
     }
-
+    // Trie les employés par salaire dans l'ordre spécifié (croissant ou décroissant) et affiche la liste triée.
     public static void trierEmployesParSalaire(boolean ordreCroissant) {
         Arrays.sort(employes, 0, count, (a, b)
                        -> ordreCroissant ? Double.compare(
@@ -172,7 +179,8 @@ public class GestionEmployes {
             }
         }
     }
-
+    // Recherche et affiche les employés qui correspondent au critère donné (nom ou poste).
+// Si aucun employé correspondant n'est trouvé, affiche un message d'erreur.
     public static void rechercherEmploye(String critere) {
         new Thread(() -> {
             boolean found = false;
